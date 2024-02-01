@@ -1,0 +1,32 @@
+header{
+    background-color: #444243;
+    color: white;
+    font-size: 100px;
+    text-align: center;
+}
+footer{
+    color: white;
+}
+
+#menucito{
+    position: relative;
+    text-align: center;
+    border-style: solid;
+    background-color: #444243;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+body{
+    background-image: url("background-flores.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    z-index: 0;
+}
+#flor{
+    position:absolute;
+    z-index: 1;
+}
