@@ -1,180 +1,71 @@
 body {
   background: linear-gradient(
-    rgba(255, 201, 35, 1) 0%,
-    rgba(248,244,207,255) 100%
+    rgba(255, 201, 35, 1),
+    rgba(248,244,207,255)
   );
-  background-repeat: no-repeat;
   margin: 0;
-  position: relative;
-  min-height: 210vh;
+  padding: 0;
+  border-style: dotted;
+  border-color: #fdcf55;
+  background-repeat: no-repeat;
+  transform-origin: top left;
+  transform: scale(1);
+  min-height: 100vh;
 }
-::-webkit-scrollbar {
-  width: 0px;
-}
-#alergenos table {
-  position: absolute;
-  top: 11%;
-  width: 90%; 
-  text-align: center;
+
+.container {
+  width: 80%;
   margin: 0 auto;
-  left: 0;
-  right: 0;
 }
-#alergenos th,
-#alergenos td { /* Reducir el relleno de las celdas y el tamaño del texto */
-  padding: 5px; 
-  font-size: 17px;
-}
-#alergenos img { /* Reducir la anchura y la altura máxima de las imágenes de la tabla de alergenos respectivamente */
-  max-width: 65px; 
-  max-height: 65px; 
-}
+
 #titulo {
   color: white;
-  font-size: 50px;
+  font-size: 2rem;
   text-align: center;
+  margin-top: 0;
 }
-h1 {
-  font-weight: 500;
-}
+
 header {
-  width: 100%;
-  height: 100px;
   background-image: url("../imagenes/barra.jpg");
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
-  margin-top: -33.1px; /*Para que la imagen del bar este pegada al borde de arriba 👍*/
+  padding: 20px 0;
 }
+
 #links {
-  width: 99, 1%;
   background-color: #fdcf55;
   opacity: 0.9;
-  border-style: solid;
-  border-width: 1px;
-  text-align: center;
-}
-#links li {
-  display: inline-block;
-  font-size: 20px;
-  padding: 10px;
-}
-footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 99.86%;
-  background-color: rgba(255, 255, 255, 1) 100%;
-  color: black;
-  text-align: center;
   border: 1px solid black;
-  padding-bottom: 1mm;
+  text-align: center;
+  padding: 10px 0;
 }
+
+#links ul {
+  list-style: none;
+  padding: 0;
+}
+
+#links li {
+  display: inline;
+  font-size: 1.2rem;
+  padding: 0 10px;
+}
+
+footer {
+  background-color: grey;
+  color: black;
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid black;
+}
+
 #flag {
-  position: absolute; 
-  right: 2%; 
-  top: 0%; 
-  height: 100px; 
-  z-index: 2; 
+  float: right;
+  height: 80px;
+  margin-right: 20px;
 }
+
 #flagFooter {
-  margin: right;
-  bottom: 0%;
-  height: 50px;
-}
-a:link,
-a:visited,
-a:hover,
-a:active {
-  text-decoration: none; /* Juntamos todo, y lo cambiamos a negro */
-  color: black;
-}
-#mapa {
-  width: 100%;
-  height: 20%;
-  position: absolute;
-  bottom: 10%; 
-  left: 0;
-  right: 0; 
-} 
-.container {/*Cosas del menu ↓↓↓ */
-  position: absolute;
-  width: 50%;
-  top: 25%;
-  left: 25%;
-  color: black;
-  z-index: 3;
-  text-align: center;
-}
-.container ul {
-  text-align: center;
-  list-style-type: none;
-}
-.container img { /* Imagenes del menu ancho y alto*/
-  max-width: 200px; 
-  max-height: 200px;
-  text-align: center;
-}
-#nMapa {
-  border-width: 10px;
-  position: absolute;
-  bottom: 14%;
-  left: 0;
-  right: 0;
-}
-#entrantes {
-  padding: auto;
-  position: absolute;
-  left: -50%;
-  text-align: center;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #997a1d;
-}
-#primeros {
-  padding: auto;
-  text-align: center;
-  position: absolute;
-  left: -3.6%;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #997a1d;
-}
-#segundos {
-  padding: auto;
-  text-align: center;
-  position: absolute;
-  right: 1.2%;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #997a1d;
-}
-#postres {
-  padding: auto;
-  text-align: center;
-  position: absolute;
-  right: -50%;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #997a1d;
-}
-
-#face {
-  height: 25px;
-  margin: right;
-  bottom: 10%;
-  height: 50px;
-}
-#insta {
-  height: 25px;
-  margin: right;
-  bottom: 10%;
-  height: 50px;
-}
-
-#twitter {
-  height: 25px;
-  margin: right;
-  bottom: 10%;
-  height: 50px;
+  height: 40px;
+  vertical-align: middle;
 }
