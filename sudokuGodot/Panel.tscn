@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Theme" id=2]
+
+[sub_resource type="Theme" id=1]
+
+[node name="Panel" type="Panel"]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = SubResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = SubResource( 1 )
+align = 1
+valign = 1
