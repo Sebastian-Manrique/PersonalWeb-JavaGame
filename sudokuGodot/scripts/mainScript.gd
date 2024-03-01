@@ -7,8 +7,11 @@ var Panel_scene = preload("res://Panel.tscn")
 var arr = []
 var green_color = Color(0, 1, 0)  # Color verde
 var red_color = Color(1, 0, 0)  # Color rojo
+var black_color = Color(0, 0, 0)  # Color negro
 var current_edit_row = -1
 var current_edit_col = -1
+var text_edit_connection  # Variable para almacenar la conexión de la señal
+var all_numbers_set = false
 
 func _ready():
 	init_grids()
@@ -16,8 +19,38 @@ func _ready():
 	fill_numbers()
 	clean_numbers()
 	show()
+	text_edit_connection = $Control/TextEdit.connect("text_changed", self, "_on_text_entered")
 
-func init_grids():    
+func _on_text_entered():
+	var edit = $Control/TextEdit
+	var row_idx = int(float(edit.get_index()) / row)
+	var col_idx = int(edit.get_index() % col)
+	var number = int(edit.text)
+	print("Número introducido:", number)  # Imprimir el número introducido por el usuario
+	if number >= 1 && number <= 9:
+		arr[row_idx * row + col_idx] = number
+		var is_valid = is_row_valid(row_idx) && is_col_valid(col_idx) && is_area_valid(row_idx, col_idx)
+		if is_valid:
+			edit.add_color_override("font_color", green_color)
+			check_row_and_col(row_idx, col_idx, number)
+		else:
+			edit.add_color_override("font_color", red_color)
+	else:
+		edit.add_color_override("font_color", Color(1, 1, 1))  # Restaurar el color predeterminado
+
+	# Verificar si todos los números han sido ingresados
+	if !arr.has(null):
+		all_numbers_set = true
+		disable_read_only()
+
+func disable_read_only():
+	var panels = get_children()
+	for panel in panels:
+		var text_edit = panel.get_node("TextEdit")
+		text_edit.read_only = false
+		text_edit.add_color_override("custom_background_color", black_color)
+
+func init_grids():
 	var offset_x = 0
 	var offset_y = 0
 	for i in range(row):
@@ -47,15 +80,12 @@ func show():
 			var text_edit = panel.get_node("TextEdit")
 			if number:
 				text_edit.text = str(number)
+				text_edit.read_only = true
+				text_edit.add_color_override("custom_background_color", black_color)
 			else:
 				text_edit.text = ""
-			if current_edit_row == i or current_edit_col == j:
-				if is_row_valid(i) and is_col_valid(j):
-					text_edit.add_color_override("font_color", green_color)
-				else:
-					text_edit.add_color_override("font_color", red_color)
-			else:
-				text_edit.add_color_override("font_color", Color(1, 1, 1))  # Restaurar el color predeterminado
+				text_edit.read_only = false
+				text_edit.add_color_override("custom_background_color", Color(1, 1, 1))  # Restaurar el color predeterminado
 
 func fill_numbers():
 	for n in range(3):
@@ -68,14 +98,14 @@ func fill_empty():
 	var find_null = arr.find(null)
 	if find_null == -1:
 		return true
-	
+
 	var i = find_null / row
 	var j = find_null % col
-	
+
 	var candidates = get_candidates(i, j)
 	if !candidates:
 		return false
-	
+
 	var fill
 	while candidates:
 		fill = candidates.pop_back()
@@ -148,18 +178,14 @@ func is_col_valid(j):
 	var numbers_in_col = get_col_numbers(j)
 	return numbers_in_col.size() == len(numbers_in_col.unique())
 
-func _on_TextEdit_text_entered(text):
-	var edit = get_node("TextEdit")
-	var text_edit = edit.text.to_int()
-	if text_edit and text_edit >= 1 and text_edit <= 9:
-		arr[current_edit_row * row + current_edit_col] = text_edit
-	else:
-		# Restaurar el valor anterior si se ingresa un número incorrecto
-		edit.text = str(arr[current_edit_row * row + current_edit_col])
+func is_area_valid(i, j):
+	var numbers_in_area = get_area_numbers(i, j)
+	return numbers_in_area.size() == len(numbers_in_area.unique())
 
-func _on_TextEdit_focus_entered():
-	var edit = get_node("TextEdit")
-	var panel = edit.get_parent()
-	var idx = panel.get_index()
-	current_edit_row = idx / row
-	current_edit_col = idx % col
+func check_row_and_col(row_idx, col_idx, number):
+	var row_numbers = get_row_numbers(row_idx)
+	var col_numbers = get_col_numbers(col_idx)
+	if number in row_numbers and number in col_numbers:
+		print("El número", number, "está correctamente introducido en la fila y columna.")
+	else:
+		print("El número", number, "no está correctamente introducido en la fila y columna.")
