@@ -15,14 +15,7 @@ body {
 h1 {
   font-weight: 500;
 }
-header {
-  width: 100%;
-  height: 100px;
-  background-image: url("../imagenes/barra.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+
 #links {
   width: 99, 1%;
   background-color: #fdcf55;

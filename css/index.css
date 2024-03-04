@@ -1,29 +1,31 @@
-*{
+ @font-face { /*Fuente importada de archivo */
+  font-family: "CustomFont";
+  src: url("HelveticaCE.woff2");
+}
+*{ /*Aplicamos la fuente a todo*/
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: CustomFont;
   }
-body{
-  border: 5px cyan dotted;
+body{ /*Valores por defecto para testear y no bugear la animacion*/
+  z-index: 1;
   margin: 0;
   padding: 0;
   transform-origin: top left;
   transform: scale(1);
   min-height: 100vh;
-  background-color:  #00060f ;
+  background-color: #0d1117;
 }
-.container{
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;/*esta propiedad, hace que cualquier contenido que exceda los límites de la caja contenedora del elemento se ocultará */
+::-webkit-scrollbar { /*Quitar la barrita de lateral de navegacion*/
+  display: none;
 }
-.bubbles{
-  z-index: 100;
+.bubbles{ /* Burbujas del fondo*/
+  z-index: -1;
   position: relative;
   display: flex;
 }
-.bubbles span{
+.bubbles span{  /*El monton de burbujas*/
   position: relative;
   width: 30px;
   height: 30px;
@@ -36,13 +38,13 @@ body{
   animation: animate 15s linear infinite;
   animation-duration: calc(150s / var(--i));
 }
-.bubbles span:nth-child(even){
+.bubbles span:nth-child(even){  /*Solo las burbujas rosas*/
   background: #ff2d75;
   box-shadow: 0 0 0 10px #ff2d7544,
   0 0 50px #ff2d75,
   0 0 100px #ff2d75;
 }
-@keyframes animate {
+@keyframes animate {  /*Animacion de las burbujas*/
   0%
   {
     transform: translateY(100vh) scale(0);
@@ -52,39 +54,21 @@ body{
     transform: translateY(-10vh) scale(1);
   }
 }
-img {
-  width:auto;
-  height:100%;
-}
-#titulo {
-  color: white;
-  font-size: 50px;
-  text-align: center;
-}
-h1 {
-  font-weight: 500;
-}
-header {
-  width: 100%;
-  height: 100px;
-  background-image: url(../imagenes/fondoHeader.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin-top: -33.1px; /*Para que la imagen del bar este pegada al borde de arriba */
-}
-#links {
+#links { /* Menu dentro del header*/
   width: 99, 1%;
-  background-color: #fdcf55;
-  opacity: 0.9;
-  border-style: solid;
-  border-width: 1px;
+  height: 78px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(1,4,9,1)); /*Crea el efecto de transparecia con el 0 y el 1 finales :) descubierto al dedillo */
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
-#links li {
-  display: inline-block;
+#links li { /*li dentro de links dentro de header*/
+  display: inline-block; /*Pa' que se alinean*/
   font-size: 20px;
-  padding: 10px;
+
+  margin: 0 10px;
+  text-align: center; /* Para centrar horizontalmente */
+  line-height: 78px; /* Para centrar verticalmente */
 }
 footer {
   position: absolute;
@@ -94,19 +78,34 @@ footer {
   color: black;
   text-align: center;
   padding-bottom: 1mm;
+  
 }
 footer p{
   color: white;
 }
-#flag {
+#flag { /*El icono del mando del header*/
   position: absolute;
-  right: 2%;
+  left: 100px;
   top: 0%;
   height: 100px;
   z-index: 2;
 }
 #flagFooter {
-  margin: right;
-  bottom: 0%;
+  display: inline-block; /* Cambia el comportamiento del elemento a inline-block */
+  vertical-align: middle; /* Alinea verticalmente con el texto */
+  margin-left: 10px; /* Espacio entre el texto y la imagen */
   height: 50px;
+}
+
+#texto{ 
+  position: absolute;
+  display: flex;
+  color: #fdcf55;
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none; /* Juntamos todo, y lo cambiamos a negro */
+  color: white;
 }
