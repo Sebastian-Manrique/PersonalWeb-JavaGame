@@ -1,0 +1,93 @@
+body {
+  background: linear-gradient(
+    rgba(255, 201, 35, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background-repeat: no-repeat;
+  margin: 0; /*Para quitar muchos problemas de margenes*/
+  padding: 0;
+}
+#titulo {
+  color: white;
+  font-size: 50px;
+  text-align: center;
+}
+h1 {
+  font-weight: 500;
+}
+
+#links {
+  width: 99, 1%;
+  background-color: #fdcf55;
+  opacity: 0.9;
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+}
+#links li {
+  display: inline-block;
+  font-size: 20px;
+  padding: 10px;
+}
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 99.909%;
+  background-color: rgba(255, 255, 255, 1) 100%;
+  color: black;
+  text-align: center;
+  border: 1px solid black;
+  padding-bottom: 1mm;
+}
+#flag {
+  position: absolute; /* Establece la posición absoluta */
+  right: 2%; /* Margen del 5% desde el borde derecho */
+  top: 0%; /* Margen del 5% desde el borde superior */
+  height: 100px; /* Altura fija */
+  z-index: 2; /* Asegura que esté por encima de otros elementos */
+}
+#flagFooter {
+  margin: right;
+  bottom: 0%;
+  height: 50px;
+}
+.container {
+  position: absolute;
+  width: 50%;
+  top: 25%;
+  left: 25%;
+  color: black;
+  z-index: 3;
+  text-align: center;
+}
+#imagen {
+  height: 350px;
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none; /* Juntamos todo, y lo cambiamos a negro */
+  color: black;
+}
+
+#face {
+  height: 25px;
+  margin: right;
+  bottom: 10%;
+  height: 50px;
+}
+#insta {
+  height: 25px;
+  margin: right;
+  bottom: 10%;
+  height: 50px;
+}
+
+#twitter {
+  height: 25px;
+  margin: right;
+  bottom: 10%;
+  height: 50px;
+}
