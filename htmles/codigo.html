@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub</title>
+    <link rel="icon" type="image/x-icon" href="/imagenes/favicon2.ico">
+    <link rel="stylesheet" href="/css/trabajaConNosotros.css">
+</head>
+<body>
+    extends Node2D<br>
+<br>
+var row = 9<br>
+var col = 9<br>
+var size = 40<br>
+var Panel_scene = preload("res://Panel.tscn")<br>
+var arr = []<br>
+var green_color = Color(0, 1, 0)  # Color verde<br>
+var red_color = Color(1, 0, 0)  # Color rojo<br>
+var current_edit_row = -1<br>
+var current_edit_col = -1<br>
+<br>
+func _ready():<br>
+	init_grids()<br>
+	init_arr()<br>
+	fill_numbers()<br>
+	clean_numbers()<br>
+	show()<br>
+<br>
+func init_grids():<br>
+	var offset_x = 0<br>
+	var offset_y = 0<br>
+	for i in range(row):<br>
+		offset_x = 0<br>
+		offset_y += 2<br>
+		if i % 3 == 0:<br>
+			offset_y += 2<br>
+		for j in range(col):<br>
+			offset_x += 2<br>
+			if j % 3 == 0:<br>
+				offset_x += 2<br>
+			var panel = Panel_scene.instance()<br>
+			panel.rect_position = Vector2(size * j, size * i) + Vector2(offset_x, offset_y)<br>
+			add_child(panel)<br>
+<br>
+func init_arr():<br>
+	for i in row:<br>
+		for j in col:<br>
+			arr.append(null)<br>
+<br>
+func show():<br>
+	var panels = get_children()<br>
+	for i in row:<br>
+		for j in col:<br>
+			var number = arr[i * row + j]<br>
+			var panel = panels[i * row + j]<br>
+			var text_edit = panel.get_node("TextEdit")<br>
+			if number:<br>
+				text_edit.text = str(number)<br>
+			else:<br>
+				text_edit.text = ""<br>
+			if current_edit_row == i or current_edit_col == j:<br>
+				if is_row_valid(i) and is_col_valid(j):<br>
+					text_edit.add_color_override("font_color", green_color)<br>
+				else:<br>
+					text_edit.add_color_override("font_color", red_color)<br>
+			else:<br>
+				text_edit.add_color_override("font_color", Color(1, 1, 1))  # Restaurar el color predeterminado<br>
+<br>
+func fill_numbers():<br>
+	for n in range(3):<br>
+		for i in range(n * 3, n * 3 + 3):<br>
+			for j in range(n * 3, n * 3 + 3):<br>
+				arr[i * row + j] = (i * 3 + j + 1) % 9 + 1  # Llenar de 1 a 9 en cada bloque de 3x3<br>
+	fill_empty()<br>
+<br>
+func fill_empty():<br>
+	var find_null = arr.find(null)<br>
+	if find_null == -1:<br>
+		return true<br>
+	<br>
+	var i = find_null / row<br>
+	var j = find_null % col<br>
+	<br>
+	var candidates = get_candidates(i, j)<br>
+	if !candidates:<br>
+		return false<br>
+	<br>
+	var fill<br>
+	while candidates:<br>
+		fill = candidates.pop_back()<br>
+		arr[i * row + j] = fill<br>
+		if fill_empty():<br>
+			return true<br>
+		else:<br>
+			arr[i * row + j] = null<br>
+	<br>
+	if is_row_complete(i) or is_col_complete(j):<br>
+		print("Row or column is complete!")  # Aquí puedes agregar la lógica que desees al completar una fila o columna.<br>
+<br>
+func get_candidates(i, j):<br>
+	var tmp = [1, 2, 3, 4, 5, 6, 7, 8, 9]<br>
+	for number in get_row_numbers(i):<br>
+		tmp.erase(number)<br>
+	for number in get_col_numbers(j):<br>
+		tmp.erase(number)<br>
+	for number in get_area_numbers(i, j):<br>
+		tmp.erase(number)<br>
+	return tmp<br>
+<br>
+func get_row_numbers(i):<br>
+	var res = []<br>
+	for j in range(col):<br>
+		var number = arr[i * row + j]<br>
+		if number:<br>
+			res.append(number)<br>
+	return res<br>
+<br>
+func get_col_numbers(j):<br>
+	var res = []<br>
+	for i in range(row):<br>
+		var number = arr[i * row + j]<br>
+		if number:<br>
+			res.append(number)<br>
+	return res<br>
+<br>
+func get_area_numbers(i, j):<br>
+	var offset_i = i / 3 * 3<br>
+	var offset_j = j / 3 * 3<br>
+	var res = []<br>
+	for area_i in range(offset_i, offset_i + 3):<br>
+		for area_j in range(offset_j, offset_j + 3):<br>
+			var number = arr[area_i * row + area_j]<br>
+			if number:<br>
+				res.append(number)<br>
+	return res<br>
+<br>
+func clean_numbers():<br>
+	for i in range(row):<br>
+		for j in range(col):<br>
+			var candidates = get_candidates(i, j)<br>
+			if candidates.empty():<br>
+				arr[i * row + j] = null<br>
+<br>
+func is_row_complete(i):<br>
+	var numbers_in_row = get_row_numbers(i)<br>
+	return numbers_in_row.size() == 9<br>
+<br>
+func is_col_complete(j):<br>
+	var numbers_in_col = get_col_numbers(j)<br>
+	return numbers_in_col.size() == 9<br>
+<br>
+func is_row_valid(i):<br>
+	var numbers_in_row = get_row_numbers(i)<br>
+	return numbers_in_row.size() == len(numbers_in_row.unique())<br>
+<br>
+func is_col_valid(j):<br>
+	var numbers_in_col = get_col_numbers(j)<br>
+	return numbers_in_col.size() == len(numbers_in_col.unique())<br>
+<br>
+func _on_TextEdit_focus_entered():<br>
+	var edit = get_node("TextEdit")<br>
+	var panel = edit.get_parent()<br>
+	var idx = panel.get_index()<br>
+	current_edit_row = idx / row<br>
+	current_edit_col = idx % col<br>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub</title>
+    <link rel="icon" type="image/x-icon" href="/imagenes/favicon2.ico">
+    <link rel="stylesheet" href="/css/trabajaConNosotros.css">
+</head>
+<body>
+	using Godot;<br>
+<br>
+using System;<br>
+<br>
+<br>
+public class playerNewNew : KinematicBody2D<br>
+<br>
+{<br>
+<br>
+    public const float OriginalSpeed = 200.0f;<br>
+<br>
+    public const float SlowerSpeed = 170.0f; // Nueva velocidad reducida<br>
+<br>
+<br>
+    public override void _Process(float delta)<br>
+<br>
+    {<br>
+<br>
+        Vector2 input = Vector2.Zero;<br>
+<br>
+<br>
+        if (Input.IsActionPressed("ui_right"))<br>
+<br>
+            input.x += 1;<br>
+<br>
+        if (Input.IsActionPressed("ui_left"))<br>
+<br>
+            input.x -= 1;<br>
+<br>
+        if (Input.IsActionPressed("ui_down"))<br>
+<br>
+            input.y += 1;<br>
+<br>
+        if (Input.IsActionPressed("ui_up"))<br>
+<br>
+            input.y -= 1;<br>
+<br>
+<br>
+        // Normalizar el vector de entrada<br>
+<br>
+        if (input.Length() > 0)<br>
+<br>
+            input = input.Normalized();<br>
+<br>
+<br>
+        // Usar la velocidad reducida<br>
+<br>
+        Vector2 velocity = input * SlowerSpeed;<br>
+<br>
+<br>
+        // Mover el cuerpo kinemático<br>
+<br>
+        Translate(velocity * delta);<br>
+<br>
+    }<br>
+<br>
+}<br>
+
+</body>
+</html>

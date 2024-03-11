@@ -1,27 +1,26 @@
  @font-face { /*Fuente importada de archivo */
   font-family: "CustomFont";
-  src: url("HelveticaCE.woff2");
+  src: url("../codigo/HelveticaCE.woff2");
 }
 *{ /*Aplicamos la fuente a todo*/
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: CustomFont;
+  color: white;
   }
 body{ /*Valores por defecto para testear y no bugear la animacion*/
-  z-index: 1;
   margin: 0;
   padding: 0;
   transform-origin: top left;
   transform: scale(1);
-  min-height: 100vh;
+  min-height: 50vh;
   background-color: #0d1117;
 }
 ::-webkit-scrollbar { /*Quitar la barrita de lateral de navegacion*/
   display: none;
 }
 .bubbles{ /* Burbujas del fondo*/
-  z-index: -1;
   position: relative;
   display: flex;
 }
@@ -36,76 +35,147 @@ body{ /*Valores por defecto para testear y no bugear la animacion*/
   0 0 50px #4fc3dc,
   0 0 100px #4fc3dc;
   animation: animate 15s linear infinite;
-  animation-duration: calc(150s / var(--i));
+  animation-duration: calc(250s / var(--i));
 }
-.bubbles span:nth-child(even){  /*Solo las burbujas rosas*/
+.bubbles span:nth-child(even){  /*aplica estilos específicos a todos los elementos <span> que son hijos pares de bubble*/
   background: #ff2d75;
   box-shadow: 0 0 0 10px #ff2d7544,
   0 0 50px #ff2d75,
   0 0 100px #ff2d75;
+  z-index: -1;
 }
 @keyframes animate {  /*Animacion de las burbujas*/
   0%
   {
-    transform: translateY(100vh) scale(0);
+    transform: translateY(10vh) scale(0);
   }
   100%
   {
-    transform: translateY(-10vh) scale(1);
+    transform: translateY(-300vh) scale(1);
   }
-}
-#links { /* Menu dentro del header*/
-  width: 99, 1%;
-  height: 78px;
-  background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(1,4,9,1)); /*Crea el efecto de transparecia con el 0 y el 1 finales :) descubierto al dedillo */
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-#links li { /*li dentro de links dentro de header*/
-  display: inline-block; /*Pa' que se alinean*/
-  font-size: 20px;
-
-  margin: 0 10px;
-  text-align: center; /* Para centrar horizontalmente */
-  line-height: 78px; /* Para centrar verticalmente */
-}
-footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 99.86%;
-  color: black;
-  text-align: center;
-  padding-bottom: 1mm;
-  
-}
-footer p{
-  color: white;
-}
-#flag { /*El icono del mando del header*/
-  position: absolute;
-  left: 100px;
-  top: 0%;
-  height: 100px;
-  z-index: 2;
-}
-#flagFooter {
-  display: inline-block; /* Cambia el comportamiento del elemento a inline-block */
-  vertical-align: middle; /* Alinea verticalmente con el texto */
-  margin-left: 10px; /* Espacio entre el texto y la imagen */
-  height: 50px;
-}
-
-#texto{ 
-  position: absolute;
-  display: flex;
-  color: #fdcf55;
 }
 a:link,
 a:visited,
 a:hover,
 a:active {
   text-decoration: none; /* Juntamos todo, y lo cambiamos a negro */
+}
+header{   /* Menu del header*/
+  background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(1,4,9,1)); /*Crea el efecto de transparecia con el 0 y el 1 finales :) descubierto al dedillo */
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+header li{  /*li dentro de links dentro de header*/
+  display: inline-block; /*Pa' que se alinean*/
+  font-size: 20px;
+  margin: 0 10px;
+  text-align: center; /* Para centrar horizontalmente */
+  line-height: 78px; /* Para centrar verticalmente */
+}
+#flag { /*El icono del mando del header*/
+  position: absolute;
+  left: 100px;
+  top: 0%;
+  height: 100px;
+}
+main{ /*El panel debajo del menu*/
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-template-columns: repeat(2, 1fr);
+}
+.item1 {
+  color: red;
+  grid-area: 1 / 1 / 3 / 6;/*Esta propiedad es: row-start / col-start / row-rend / col-end */
+  display: flex; /* Convertir el div en un contenedor flexible */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+}
+.item1 p{
+  margin-left: 2vb;
+}
+.item2 {
   color: white;
+  grid-area: 3 / 1 / 5 / 6;
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+}
+.item2-1,
+.item2-2,
+.item2-3 {
+  text-align: center; /* Alinear contenido del div al centro */
+  margin: 0 10px;
+}
+.item2-2, /*Pongo bordes para que se distigan bien el contenido y la separacion*/
+.item2-3 {
+  border-left: 1px black solid;
+}
+.item2-1{
+  border-right: 1px black solid;
+}
+.item2-2{
+  border-right: 1px black solid;
+}
+.item2-1 img{ /*La imagen del sudoku del segundo-primer-div*/
+  height: 300px;
+}
+.item2-2 img{ /*La imagen de la terminal del segundo-segundo-div*/
+  height: 300px;
+}
+.item2-3 img{ /*La imagen del mapa hecho con Godot del segundo-tercer-div*/
+  height: 300px;
+}
+.item3 {
+  color: white;
+  grid-area: 5 / 1 / 7 / 3;
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+}
+.item3-1,
+.item3-2,
+.item3-3 {
+  text-align: center; /* Alinear contenido del div al centro */
+  margin: 0 10px;
+}
+.item3-1{
+  border-right: 1px black solid;
+}
+.item3-1 img{ /*La imagen del pacman del tercer-primer-div*/
+  height: 400px;
+}
+.item3-1{
+  border-left: 1px black solid;
+}
+.item3-2{
+  border-left: 1px black solid;
+  border-right: 1px black solid;
+}
+.item3-3{
+  border-left: 1px black solid;
+}
+.item3-2 img{ /*La imagen de la ruleta del tercer-segundo-div*/
+  height: 400px;
+}
+.item3-3 img{ /*La imagen del mapa hecho con Godot del segundo-tercer-div*/
+  height: 400px;
+}
+img{
+  opacity: 0.9;
+}
+footer {
+  position: absolute;
+  left: 0;
+  bottom: -5vh;
+  width: 100%;
+  text-align: center;
+}
+#flagFooter {
+  position: absolute;
+  left: 75vb;
+  top: -4vh;
+  height: 100px;
 }
