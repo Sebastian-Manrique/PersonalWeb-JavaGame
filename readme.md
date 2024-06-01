@@ -1,4 +1,3 @@
-<h1 align="center">Hi 👋, I'm Sebastian</h1>
 <h3 align="center">This is a repository for a java and html project. But the have nothing to do with eachother.</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=wildrepublicmini&label=Profile%20views&color=0e75b6&style=flat" alt="wildrepublicmini" /> </p>
