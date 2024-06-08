@@ -1,0 +1,108 @@
+@font-face { /*Fuente importada de archivo */
+  font-family: "CustomFont";
+  src: url("../codigo/HelveticaCE.woff2");
+}
+*{ /*Aplicamos la fuente a todo*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: CustomFont;
+  color: white;
+  }
+body{ /*Valores por defecto para testear y no bugear la animacion*/
+  margin: 0;
+  padding: 0;
+  transform-origin: top left;
+  transform: scale(1);
+  min-height: 90vh;
+  background-color: #0d1117;
+}
+::-webkit-scrollbar { /*Quitar la barrita de lateral de navegacion*/
+  display: none;
+}
+main{
+  display: grid;
+  place-items: center;
+  position: absolute;
+  height: 80%;
+  width: 100%;
+}
+.bubbles{ /* Burbujas del fondo*/
+  position: relative;
+  display: flex;
+}
+.bubbles span{  /*El monton de burbujas*/
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: #4fc3dc;
+  margin: 0 4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #4fc3dc44,
+  0 0 50px #4fc3dc,
+  0 0 100px #4fc3dc;
+  animation: animate 15s linear infinite;
+  animation-duration: calc(90s / var(--i));
+  z-index: 1;
+}
+.bubbles span:nth-child(even){  /*aplica estilos específicos a todos los elementos <span> que son hijos pares de bubble*/
+  background: #ff2d75;
+  box-shadow: 0 0 0 10px #ff2d7544,
+  0 0 50px #ff2d75,
+  0 0 100px #ff2d75;
+  z-index: -1;
+}
+@keyframes animate {  /*Animacion de las burbujas*/
+  0%
+  {
+    transform: translateY(100vh) scale(0);
+  }
+  100%
+  {
+    transform: translateY(-40vh) scale(1);
+  }
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none; /* Juntamos todo, y lo cambiamos a negro */
+}
+header{   /* Menu del header*/
+  background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(1,4,9,1)); /*Crea el efecto de transparecia con el 0 y el 1 finales :) descubierto al dedillo */
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+header li{  /*li dentro de links dentro de header*/
+  display: inline-block; /*Pa' que se alinean*/
+  font-size: 20px;
+  margin: 0 10px;
+  text-align: center; /* Para centrar horizontalmente */
+  line-height: 78px; /* Para centrar verticalmente */
+}
+#flag { /*El icono del mando del header*/
+  position: absolute;
+  left: 100px;
+  top: 0%;
+  height: 100px;
+}
+img{
+  opacity: 0.9;
+  z-index: 1;
+}
+footer {
+  position: absolute;
+  left: 0;
+  bottom: -5vh;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+}
+#flagFooter {
+  position: absolute;
+  left: 75vb;
+  top: -4vh;
+  height: 100px;
+}

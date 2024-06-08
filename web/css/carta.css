@@ -1,0 +1,71 @@
+body {
+  background: linear-gradient(
+    rgba(255, 201, 35, 1),
+    rgba(248,244,207,255)
+  );
+  margin: 0;
+  padding: 0;
+  border-style: dotted;
+  border-color: #fdcf55;
+  background-repeat: no-repeat;
+  transform-origin: top left;
+  transform: scale(1);
+  min-height: 100vh;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#titulo {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 0;
+}
+
+header {
+  background-image: url("../imagenes/barra.jpg");
+  background-position: center;
+  background-size: cover;
+  padding: 20px 0;
+}
+
+#links {
+  background-color: #fdcf55;
+  opacity: 0.9;
+  border: 1px solid black;
+  text-align: center;
+  padding: 10px 0;
+}
+
+#links ul {
+  list-style: none;
+  padding: 0;
+}
+
+#links li {
+  display: inline;
+  font-size: 1.2rem;
+  padding: 0 10px;
+}
+
+footer {
+  background-color: grey;
+  color: black;
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid black;
+}
+
+#flag {
+  float: right;
+  height: 80px;
+  margin-right: 20px;
+}
+
+#flagFooter {
+  height: 40px;
+  vertical-align: middle;
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub</title>
+    <link rel="icon" type="image/x-icon" href="/imagenes/favicon2.ico">
+    <link rel="stylesheet" href="/css/trabajaConNosotros.css">
+</head>
+<body>
+	import java.util.Scanner;<br>
+<br>
+public class PrimerCamino {<br>
+    public Scanner sc = new Scanner(System.in);<br>
+<br>
+    public void primeraDecision(String decision) {<br>
+        if (decision.equals("1")) {<br>
+            System.out.println("Te adentras al bosque y ves a lo lejos una casa.¿Qué haces?<br>1.Te acertas.<br>2.Sigues recto.<br>3.Te devuelves.");<br>
+            primeraDecision(sc.nextLine());<br>
+            switch (decision) {<br>
+                case "1": {<br>
+                    System.out.println("Te acercaste a la casa en el bosque.");<br>
+                    break;<br>
+                }<br>
+                case "2": {<br>
+                    System.out.println("Seguiste recto.");<br>
+                    break;<br>
+                }<br>
+                case "3": {<br>
+                    System.out.println("Te devolviste porque no te gustan los bosques (normal).");<br>
+                    break;<br>
+                }<br>
+                default:System.out.println("Elige una opción válidanº1");<br>
+            }<br>
+        } else {<br>
+             segundaDecision(decision);<br>
+        }<br>
+    }<br>
+<br>
+    public void segundaDecision(String decision) {<br>
+        System.out.print("No te has adentrado al bosque, miras alrededor, y te das cuenta de que,<br>estas en Guarroman, Jaén."<br>
+        +" Sabes que no vas a durar mucho aquí, asi que decides. . ."<br>
+        +"<br>1.Buscar a alguien para pedir ayuda."<br>
+        +"<br>2.Acudir al bar mas cercano."<br>
+        +"<br>3.Andar hacia el pueblo.");<br>
+        System.out.println();<br>
+        decision = sc.nextLine();<br>
+        switch (decision) {<br>
+            case "1":{<br>
+            System.out.println("En Guarroman no hay apenas gente pero te encuentras a un anciano paseando.");<br>
+            terceraDecision(decision);<br>
+            break;<br>
+            }<br>
+            case "2":{<br>
+            System.out.println("Obviamente encuentras varios bares.");<br>
+            terceraDecision(decision);<br>
+            break;<br>
+            }<br>
+            case "3":{<br>
+            System.out.println("Decides andar al pueblo . . .");<br>
+            terceraDecision(decision);<br>
+            break;<br>
+            }<br>
+            default:<br>
+                System.out.println("Elige una opción válida.");<br>
+        }<br>
+    }<br>
+    public void terceraDecision(String decision) {<br>
+        if (decision.equals("1")) {<br>
+            boolean mostrarDialogo = true;<br>
+            boolean respuesta1= false;<br>
+            boolean respuesta2= false;<br>
+            boolean respuesta3= false;<br>
+               do {<br>
+                    if (mostrarDialogo) {<br>
+                        System.out.println("Que le decides preguntar al anciano."<br>
+                                + "<br>1.Pides ayuda para salir de Guarroman."<br>
+                                + "<br>2.Pides la hora"<br>
+                                + "<br>3.Pides dinero.");<br>
+                    }<br>
+<br>
+                    decision = sc.nextLine(); // Para hablar con el anciano.<br>
+<br>
+                    switch (decision) {<br>
+                        case "1": {<br>
+                            System.out.println("Te responde con un acento muy cerrado: 'çuerte xabâh pa çali' de Guarroman çin coxe.'.");<br>
+                            respuesta1= true;<br>
+                            break;<br>
+                        }<br>
+                        case "2": {<br>
+                            System.out.println("Te dice la hora con un: 'puê mira çon lâ çeî y media'.");<br>
+                            respuesta2= true;<br>
+                            break;<br>
+                        }<br>
+                        case "3": {<br>
+                            System.out.println("Dice: 'ni arto de bino te doy yo un çentimo'.");<br>
+                            respuesta3= true;<br>
+                            break;<br>
+                        }<br>
+                        default:<br>
+                            System.out.println("Elige una opción válida.");<br>
+                    }<br>
+<br>
+                    // Para volver a mostrar el diálogo después de cada opción seleccionada<br>
+                    mostrarDialogo = true;<br>
+<br>
+                } while (respuesta1 == true || respuesta2 == true || respuesta3 == true);<br>
+/*<br>
+                decision = sc.nextLine(); //Para hablar con el anciano.<br>
+                switch (decision) {<br>
+                case "1":{<br>
+                System.out.println("Te responde con un acento muy cerrado: 'çuerte xabâh pa çali' de Guarroman çin coxe.'.");<br>
+                break;<br>
+                }<br>
+                case "2":{<br>
+                System.out.println("Te dice la hora con un: 'puê mira çon lâ çeî y media'.");<br>
+                break;<br>
+                }<br>
+                case "3":{<br>
+                System.out.println("Dice: 'ni arto de bino te doy yo un çentimo'.");<br>
+                break;<br>
+                }<br>
+                default:<br>
+                    System.out.println("Elige una opción válida.");<br>
+                }*/<br>
+        }else if(decision.equals("2")) {<br>
+            System.out.println("Ves tres diferentes bares uno pijo, uno humilde y uno gitano.¿A cual entras?"<br>
+                    + "<br>1.Al pijo."<br>
+                    + "<br>2.Al humilde."<br>
+                    + "<br>3.Al gitano.");<br>
+            decision = sc.nextLine(); //Para ir a los bares.<br>
+            switch (decision) {<br>
+            case "1":{<br>
+            System.out.println("Entras al pijo.");<br>
+            break;<br>
+            }<br>
+            case "2":{<br>
+            System.out.println("Entras al humilde.");<br>
+            break;<br>
+            }<br>
+            case "3":{<br>
+            System.out.println("Entras al gitano.");<br>
+            break;<br>
+            }<br>
+            default:<br>
+                System.out.println("Elige una opción válida.");<br>
+            }<br>
+        } else if(decision.equals("3")) {<br>
+            System.out.println("Vas al pueblo y ves como todo el mundo habla con un toque en la boca llamado 'acento andaluz'<br>Dejando eso de lado.¿Donde vas?"<br>
+                    + "<br>1.Al ayuntamiento."<br>
+                    + "<br>2.A un parque."<br>
+                    + "<br>3.A una comisaria.");<br>
+            decision = sc.nextLine(); //Para andar al pueblo.<br>
+            switch (decision) {<br>
+            case "1":{<br>
+            System.out.println("Caminas al ayuntamiento.");<br>
+            break;<br>
+            }<br>
+            case "2":{<br>
+            System.out.println("Caminas al parque.");<br>
+            break;<br>
+            }<br>
+            case "3":{<br>
+            System.out.println("Caminas a una comisaria.");<br>
+            break;<br>
+            }<br>
+            default:<br>
+                System.out.println("Elige una opción válida.");<br>
+            }<br>
+        } <br>
+    }<br>
+}<br>
+
+</body>
+</html>

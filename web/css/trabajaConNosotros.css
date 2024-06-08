@@ -1,0 +1,203 @@
+@font-face { /*Fuente importada de archivo */
+  font-family: "CustomFont";
+  src: url("HelveticaCE.woff2");
+} 
+/*De aqui para abajo es el form*/
+.containerF {
+  width: 25%;
+  align-items: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0); /*Crea el efecto de transparecia con el 0 y el 1 finales :) descubierto al dedillo */
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 50px auto;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="datetime-local"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+* {
+  box-sizing: border-box;
+}
+/*De aqui para arriba es el form*/
+*{ /*Aplicamos la fuente a todo*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: CustomFont;
+  color: white;
+  }
+  form input{ /*Para que cuando el usuario escriba pueda ver las letras*/
+    color: black;
+  }
+body{ /*Valores por defecto para testear y no bugear la animacion*/
+  margin: 0;
+  padding: 0;
+  transform-origin: top left;
+  transform: scale(1);
+  background-color: #0d1117;
+}
+::-webkit-scrollbar { /*Quitar la barrita de lateral de navegacion*/
+  display: none;
+}
+.container{ /*"Burbujas de area de empleo"*/
+  position: absolute;
+  width: 50%;
+  left: 50%;
+}
+.bubbles{ /* Burbujas del fondo*/
+  position: relative;
+  display: flex;
+}
+.bubbles span{  /*El monton de burbujas*/
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: #4fc3dc;
+  margin: 0 4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #4fc3dc44,
+  0 0 50px #4fc3dc,
+  0 0 100px #4fc3dc;
+  animation: animate 15s linear infinite;
+  animation-duration: calc(100s / var(--i));
+}
+.container .bubbles span{  /*El monton de burbujas*/
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: #4fc3dc;
+  margin: 0 4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #4fc3dc44,
+  0 0 50px #4fc3dc,
+  0 0 100px #4fc3dc;
+  animation: animate2 15s linear infinite;
+  animation-duration: calc(100s / var(--i));
+}
+.bubbles span:nth-child(even){  /*aplica estilos específicos a todos los elementos <span> que son hijos pares de bubble*/
+  background: #ff2d75;
+  box-shadow: 0 0 0 10px #ff2d7544,
+  0 0 50px #ff2d75,
+  0 0 100px #ff2d75;
+  z-index: -1;
+}
+@keyframes animate {  /*Animacion de las burbujas*/
+  0%
+  {
+    transform: translateY(15vh) scale(0);
+  }
+  100%
+  {
+    transform: translateY(-100vh) scale(1);
+  }
+}
+@keyframes animate2 {  /*Animacion de las burbujas*/
+  0%
+  {
+    transform: translateY(-150vh) scale(0);
+  }
+  100%
+  {
+    transform: translateY(10vh) scale(1);
+  }
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none; /* Juntamos todo, y lo cambiamos a negro */
+  color: white;
+}
+header{   /* Menu del header*/
+  background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(1,4,9,1)); /*Crea el efecto de transparecia con el 0 y el 1 finales :) descubierto al dedillo */
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+header li{  /*li dentro de links dentro de header*/
+  display: inline-block; /*Pa' que se alinean*/
+  font-size: 20px;
+  margin: 0 10px;
+  text-align: center; /* Para centrar horizontalmente */
+  line-height: 78px; /* Para centrar verticalmente */
+}
+#flag { /*El icono del mando del header*/
+  position: absolute;
+  left: 100px;
+  top: 0%;
+  height: 100px;
+}
+table{
+  width: 100%;
+  height: 25vh;
+  text-align: center;
+}
+tr,td,th{
+  padding: 2.5vh;
+}
+table img{
+  height: 100px;
+}
+img{
+  opacity: 0.6;
+}
+.parent { /*Creador del grid*/
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  }
+  
+.div1{ /*1 div del grid*/
+  grid-area: 1 / 2 / 2 / 3;
+  border-left: 1px black solid; /*Border para ver el final*/
+}
+.div2{  /*2 div del grid*/
+  grid-area: 1 / 1 / 2 / 2;
+  border-right: 1px black solid;  /*Border para ver el final*/
+
+}
+footer {
+  position: absolute;
+  left: 0;
+  bottom: -5vh;
+  width: 100%;
+  color: black;
+  text-align: center;
+}
+#flagFooter { /*Icono de GitHub*/
+  position: absolute;
+  left: 75vb;
+  top: -4vh;
+  height: 100px;
+}
