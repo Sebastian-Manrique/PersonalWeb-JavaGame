@@ -1,0 +1,137 @@
+<html>
+<style>
+@font-face { font-family: comic; src: url('comic-sans/COMICSANS.TTF'); } 
+body{
+background-color: black;
+background-repeat:no-repeat;
+}
+table{
+-webkit-text-stroke: 0.2px black;
+font:bold 20px/21px comic;
+color:black;
+border-collapse:collapse;
+border-style:solid;
+border-color:black;
+border-width:5px;
+width:130%;
+height:100%;
+}
+td{
+border: 1px solid;
+border-color:black;
+padding: 15px;
+text-align:center;
+}
+th{
+background-color:white;
+color:black;
+border: 1px solid black;
+padding: 15px;
+text-align:center;
+}
+#tb{
+font-family: "comic sans ms";
+opacity:0.6;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-65%, -50%);
+}
+#hori{
+width:13%;
+background-color:grey;
+}
+#sge{
+background-color:#FFCC99;
+}
+#ad{
+background-color:#00FF99;
+}
+#di{
+background-color:yellowgreen;
+}
+#pmdm{
+background-color:cyan;
+}
+#eie{
+background-color:#CCFFCC;
+}
+#psp{
+background-color:#e79df8;
+}
+#Ing{
+background-color:red;
+}
+#r{
+background-color:#B2B2B2;
+}
+</style>
+<body>
+<div id="blanco1">
+<b>&nbsp</b>
+</div>
+<div id="tb">
+<table>
+	<tr>
+	<th>Hora</th>
+ 	<th>Lunes</th>
+	<th>Martes</th>
+	<th>Miercoles</th>
+	<th>Jueves</th>
+	<th>Viernes</th>
+  	</tr>
+  	<tr>
+	<tr>
+	</tr>
+<!--Primera-->
+	<td id="hori">16:00-16:55</td>
+	<td id="sge">Sistemas de gestión empresarial</td>
+	<td id="di" ROWSPAN="2">Desarrollo de interfaces</td>
+	<td id="eie">Empresa e iniciativa emprendedora</td>
+	<td id="ad" ROWSPAN="2">Acceso a datos</td>
+	<td id="pmdm">Programación multimedia y dispositivos móviles</td>
+ 	</tr>
+<!--Segunda-->
+ 	<tr>
+	<td id="hori">16:55-17:50</td>
+	<td id="di">Desarrollo de interfaces</td>
+	<td id="psp">Programación de servicios y procesos</td>	
+	<td id="sge" ROWSPAN="2">Sistemas de gestión empresarial</td>
+  	</tr>
+<!--Tercera-->
+  	<tr>
+	<td id="hori">17:50-18:45</td>
+	<td id="pmdm" style="font-size: 15px;">Programación multimedia y dispositivos móviles</td>
+	<td id="ad">Acceso a datos</td>
+	<td id="pmdm" style="font-size: 15px;">Programación multimedia y dispositivos móviles</td>
+	<td id="psp" style="font-size: 15px;">Programación de servicios y procesos</td>
+  	</tr>
+	<td id="hori">18:45-19:00</td>
+	<td id="r" colspan="5">Recreo</td>
+<!--Cuarta-->
+ 	<tr>
+	<td id="hori">19:00-19:55</td>
+	<td id="ad">Acceso a datos</td>
+	<td id="pmdm" ROWSPAN="2">Programación multimedia y dispositivos móviles</td>
+	<td id="sge">Sistemas de gestión empresarial</td>
+	<td id="di" ROWSPAN="2">Desarrollo de interfaces</td>
+	<td id="ad" ROWSPAN="2">Acceso a datos</td>
+	</tr>
+<!--Quinta-->
+	<tr>
+	<td id="hori">19:55-20:50</td>
+	<td id="eie" ROWSPAN="2">Empresa e iniciativa emprendedora</td>
+	<td id="ad">Acceso a datos</td>
+  	</tr>
+<!--Sexta-->
+  	<tr>
+	<td id="hori">20:50-21:45</td>
+	<td id="psp" style="font-size: 15px;">Programación de servicios y procesos</td>
+	<td id="di">Desarrollo de interfaces</td>
+	<td id="sge"style="font-size: 15px;">Sistemas de gestión empresarial</td>
+	<td id="di">Desarrollo de interfaces</td>
+  	</tr>
+	</table>
+</div>
+</body>
+</html>
