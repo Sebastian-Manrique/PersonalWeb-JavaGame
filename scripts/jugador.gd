@@ -6,8 +6,9 @@ const DISTANCIA_MINIMA_GENERACION = 100  # Distancia mínima entre plataformas g
 
 #Todos las escenas de los titles
 var tilemap_sofas = preload("res://escenas/plataformaSofas.tscn")
-var tilemap_mesas = preload("res://escenas/plataformaEscalera.tscn")
+var tilemap_mesas = preload("res://escenas/plataformaTablon.tscn")
 var tilemap_jodo = preload("res://escenas/jodo.tscn")
+var tilemap_mesasMovibles = preload("res://escenas/plataformasMesas.tscn")
 
 var ultima_posicion_generada = Vector2.ZERO  # Rastrea dónde se generó la última plataforma
 
@@ -22,7 +23,11 @@ func _physics_process(delta: float) -> void:
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 
-		if collider is StaticBody2D:
+		if collider is AnimatableBody2D:
+			pass
+		elif collider.name == "ground":
+			pass
+		elif collider is StaticBody2D:
 			print("Sobre una plataforma:", collider.name)
 			generar_plataforma(collider)
 
@@ -47,7 +52,7 @@ func generar_plataforma(collider: StaticBody2D) -> void:
 
 	var nueva_plataforma
 	var rng = RandomNumberGenerator.new()
-	var mapa = rng.randi_range(1, 3)
+	var mapa = rng.randi_range(1, 4)
 	print(mapa)
 
 	if mapa == 1:
@@ -56,6 +61,8 @@ func generar_plataforma(collider: StaticBody2D) -> void:
 		nueva_plataforma = tilemap_mesas.instantiate()
 	elif mapa == 3:
 		nueva_plataforma = tilemap_jodo.instantiate()
+	elif mapa == 4:
+		nueva_plataforma = tilemap_mesasMovibles.instantiate()
 
 	# Ubicar la nueva plataforma más adelante en la dirección del movimiento
 	var nueva_posicion = global_position + Vector2(0, -50)  # Genera plataformas más arriba

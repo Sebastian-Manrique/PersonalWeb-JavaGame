@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://d1xmlq8objg13"]
+[gd_scene load_steps=13 format=4 uid="uid://d1xmlq8objg13"]
 
 [ext_resource type="Texture2D" uid="uid://llnlel4wbx3e" path="res://assets/Interiors_free/Interiors_free_16x16.png" id="1_u6dtq"]
+[ext_resource type="PackedScene" uid="uid://cmpg3dsykj7qb" path="res://escenas/mesaMovible.tscn" id="3_uok4m"]
+[ext_resource type="PackedScene" uid="uid://c8j4kko2mmpn5" path="res://escenas/jugador.tscn" id="3_uux4c"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_u3j88"]
 tile_data = PackedInt32Array(0, 196608, 55)
@@ -184,8 +186,11 @@ texture = ExtResource("1_u6dtq")
 4:13/0 = 0
 6:13/0 = 0
 7:13/0 = 0
+7:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, 3, -2, 2, -1, 2, -1, 1, 8, 1, 8, 8, -2, 8)
 8:13/0 = 0
+8:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 8, 1, -8, 1, -8, 8)
 9:13/0 = 0
+9:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(2, 3, 2, 2, 1, 2, 1, 1, -8, 1, -8, 8, 2, 8)
 11:13/0 = 0
 12:13/0 = 0
 13:13/0 = 0
@@ -198,8 +203,11 @@ texture = ExtResource("1_u6dtq")
 5:14/0 = 0
 6:14/0 = 0
 7:14/0 = 0
+7:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 1, 8, -8, -2, -8, -2, 0, -1, 0, -1, 1, 0, 1, 0, 4, 2, 4, 2, 1)
 8:14/0 = 0
+8:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 2, -8, 2, -8, -8)
 9:14/0 = 0
+9:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1, -8, -8, 2, -8, 2, 0, 1, 0, 1, 1, 0, 1, 0, 4, -2, 4, -2, 1)
 10:14/0 = 0
 11:14/0 = 0
 12:14/0 = 0
@@ -1178,24 +1186,76 @@ pattern_0 = SubResource("TileMapPattern_u3j88")
 pattern_1 = SubResource("TileMapPattern_q33k1")
 pattern_2 = SubResource("TileMapPattern_8b6a1")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjigy"]
-size = Vector2(26, 13)
+[sub_resource type="Animation" id="Animation_pp72j"]
+resource_name = "mover"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(71, -30), Vector2(148, -30)]
+}
+
+[sub_resource type="Animation" id="Animation_64sb2"]
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(131, -36), Vector2(215, -63)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7x64"]
+_data = {
+"RESET": SubResource("Animation_64sb2"),
+"mover": SubResource("Animation_pp72j")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hirf6"]
+size = Vector2(33, 31.311)
 
 [node name="PlataformasMoviles" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD6////AAAAAAoAAAD6/wAAAAAAAAsAAAD6/wEAAAAAAAwAAAD7////AAABAAoAAAD7/wAAAAABAAsAAAD7/wEAAAABAAwAAAD8////AAACAAoAAAD8/wAAAAACAAsAAAD8/wEAAAACAAwAAAD9////AAADAAoAAAD9/wAAAAADAAsAAAD9/wEAAAADAAwAAAAAAP3/AAAFAAoAAAAAAP7/AAAFAAsAAAAAAP//AAAFAAwAAAABAP3/AAAGAAoAAAABAP7/AAAGAAsAAAABAP//AAAGAAwAAAACAP3/AAAHAAoAAAACAP7/AAAHAAsAAAACAP//AAAHAAwAAAADAP3/AAAIAAoAAAADAP7/AAAIAAsAAAADAP//AAAIAAwAAAA=")
+tile_map_data = PackedByteArray("AAAOAPr/AAAFAAoAAAAOAPv/AAAFAAsAAAAOAPz/AAAFAAwAAAAPAPr/AAAGAAoAAAAPAPv/AAAGAAsAAAAPAPz/AAAGAAwAAAAQAPr/AAAHAAoAAAAQAPv/AAAHAAsAAAAQAPz/AAAHAAwAAAARAPr/AAAIAAoAAAARAPv/AAAIAAsAAAARAPz/AAAIAAwAAAABAAAAAAAHAA0AAAABAAEAAAAHAA4AAAACAAAAAAAIAA0AAAACAAEAAAAIAA4AAAADAAAAAAAIAA0AAAADAAEAAAAIAA4AAAAEAAAAAAAIAA0AAAAEAAEAAAAIAA4AAAAFAAAAAAAJAA0AAAAFAAEAAAAJAA4AAAA=")
 tile_set = SubResource("TileSet_qqjqm")
 
-[node name="pizarra" type="StaticBody2D" parent="."]
-position = Vector2(124, 9)
+[node name="personaje" parent="." instance=ExtResource("3_uux4c")]
+position = Vector2(48, -45)
 
-[node name="Sprite2D" type="Sprite2D" parent="pizarra"]
-position = Vector2(-146, -83.5)
+[node name="Camera2D" type="Camera2D" parent="personaje"]
+
+[node name="movible_mesa" parent="." instance=ExtResource("3_uok4m")]
+position = Vector2(131, -36)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="movible_mesa"]
+libraries = {
+"": SubResource("AnimationLibrary_j7x64")
+}
+autoplay = "RESET"
+
+[node name="mesa_no_movible" type="StaticBody2D" parent="."]
+position = Vector2(151.602, -42.622)
+
+[node name="Sprite2D" type="Sprite2D" parent="mesa_no_movible"]
+position = Vector2(193.398, -98.378)
 texture = ExtResource("1_u6dtq")
 region_enabled = true
-region_rect = Rect2(3, 656, 26, 13)
+region_rect = Rect2(8, 160, 48, 40)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pizarra"]
-position = Vector2(-145.999, -83.504)
-shape = SubResource("RectangleShape2D_wjigy")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="mesa_no_movible"]
+position = Vector2(193.898, -100.723)
+shape = SubResource("RectangleShape2D_hirf6")

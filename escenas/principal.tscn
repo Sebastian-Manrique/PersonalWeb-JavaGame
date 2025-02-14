@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://llnlel4wbx3e" path="res://assets/Interiors_free/Interiors_free_16x16.png" id="1_xq5mj"]
 [ext_resource type="Texture2D" uid="uid://kt4msax2d2ql" path="res://assets/Interiors_free/Room_Builder_free_16x16.png" id="2_myma3"]
-[ext_resource type="PackedScene" uid="uid://5v2v47teeufb" path="res://escenas/plataformaEscalera.tscn" id="3_wblw8"]
-[ext_resource type="PackedScene" uid="uid://iu47tu17ta8a" path="res://escenas/plataformaSofas.tscn" id="5_6oxdu"]
+[ext_resource type="Script" path="res://scripts/ground.gd" id="3_jt67j"]
 [ext_resource type="PackedScene" uid="uid://c8j4kko2mmpn5" path="res://escenas/jugador.tscn" id="5_kcwef"]
 [ext_resource type="FontFile" uid="uid://blsuygiouek2e" path="res://assets/pixelFont.ttf" id="6_gywvm"]
+[ext_resource type="PackedScene" uid="uid://bbpu2sqbfak26" path="res://escenas/alfombraInicio.tscn" id="6_l3pvg"]
 [ext_resource type="Script" path="res://scripts/marcador.gd" id="7_7pp7b"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_gym1b"]
@@ -1428,26 +1428,21 @@ font_size = 32
 [node name="principal" type="Node2D"]
 
 [node name="suelo" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAABAP7/AgAAAEQAAAABAP//AwAMAA0AAAD7//7/AgAAAEQAAAD7////AwAMAA0AAAAFAP//AwANAA0AAAAHAP//AwAMAA0AAAAKAP//AwAMAA0AAAADAP7/AgAAAEQAAAADAP//AwALAA0AAAD1//7/AgAAAEQAAAD1////AwAMAA0AAADy//7/AgANACgAAADy////AwAMAA0AAADz//7/AgAOACgAAADz////AwANAA0AAADv//7/AgANACgAAADv////AwAMAA0AAADw//7/AgAOACgAAADw////AwANAA0AAADs//7/AgANACgAAADs////AwAMAA0AAADt//7/AgAOACgAAADt////AwANAA0AAAD9////AwALAA0AAAD8////AwANAA0AAAD6////AwALAA0AAADr////AwALAA0AAADr/wAAAwALAA4AAADs/wAAAwAMAA4AAADt/wAAAwANAA4AAADu////AwALAA0AAADu/wAAAwALAA4AAADv/wAAAwAMAA4AAADw/wAAAwANAA4AAADx////AwALAA0AAADx/wAAAwALAA4AAADy/wAAAwAMAA4AAADz/wAAAwANAA4AAAD0////AwALAA0AAAD0/wAAAwALAA4AAAD1/wAAAwAMAA4AAAD2////AwANAA0AAAD2/wAAAwANAA4AAAD3////AwALAA0AAAD3/wAAAwALAA4AAAD4////AwAMAA0AAAD4/wAAAwAMAA4AAAD5////AwANAA0AAAD5/wAAAwANAA4AAAD6/wAAAwALAA4AAAD7/wAAAwAMAA4AAAD8/wAAAwANAA4AAAD9/wAAAwALAA4AAAD+////AwAMAA0AAAD+/wAAAwAMAA4AAAD/////AwANAA0AAAD//wAAAwANAA4AAAAAAP//AwALAA0AAAAAAAAAAwALAA4AAAABAAAAAwAMAA4AAAACAP//AwANAA0AAAACAAAAAwANAA4AAAADAAAAAwALAA4AAAAEAP//AwAMAA0AAAAEAAAAAwAMAA4AAAAFAAAAAwANAA4AAAAGAP//AwALAA0AAAAGAAAAAwALAA4AAAAHAAAAAwAMAA4AAAAIAP//AwANAA0AAAAIAAAAAwANAA4AAAAJAP//AwALAA0AAAAJAAAAAwALAA4AAAAKAAAAAwAMAA4AAAALAP//AwANAA0AAAALAAAAAwANAA4AAAAMAP//AwALAA0AAAAMAAAAAwALAA4AAAANAP//AwAMAA0AAAANAAAAAwAMAA4AAAAOAP//AwANAA0AAAAOAAAAAwANAA4AAAAPAP//AwALAA0AAAAPAAAAAwALAA4AAAAQAP//AwAMAA0AAAAQAAAAAwAMAA4AAAA=")
+tile_map_data = PackedByteArray("AAABAP//AwAMAA0AAAD7//7/AgAAAEQAAAD7////AwAMAA0AAAAFAP//AwANAA0AAAAHAP//AwAMAA0AAAAKAP//AwAMAA0AAAADAP//AwALAA0AAAD1//7/AgAAAEQAAAD1////AwAMAA0AAADy//7/AgANACgAAADy////AwAMAA0AAADz//7/AgAOACgAAADz////AwANAA0AAADv//7/AgANACgAAADv////AwAMAA0AAADw//7/AgAOACgAAADw////AwANAA0AAADs//7/AgANACgAAADs////AwAMAA0AAADt//7/AgAOACgAAADt////AwANAA0AAAD9////AwALAA0AAAD8////AwANAA0AAAD6////AwALAA0AAADr////AwALAA0AAADr/wAAAwALAA4AAADs/wAAAwAMAA4AAADt/wAAAwANAA4AAADu////AwALAA0AAADu/wAAAwALAA4AAADv/wAAAwAMAA4AAADw/wAAAwANAA4AAADx////AwALAA0AAADx/wAAAwALAA4AAADy/wAAAwAMAA4AAADz/wAAAwANAA4AAAD0////AwALAA0AAAD0/wAAAwALAA4AAAD1/wAAAwAMAA4AAAD2////AwANAA0AAAD2/wAAAwANAA4AAAD3////AwALAA0AAAD3/wAAAwALAA4AAAD4////AwAMAA0AAAD4/wAAAwAMAA4AAAD5////AwANAA0AAAD5/wAAAwANAA4AAAD6/wAAAwALAA4AAAD7/wAAAwAMAA4AAAD8/wAAAwANAA4AAAD9/wAAAwALAA4AAAD+////AwAMAA0AAAD+/wAAAwAMAA4AAAD/////AwANAA0AAAD//wAAAwANAA4AAAAAAP//AwALAA0AAAAAAAAAAwALAA4AAAABAAAAAwAMAA4AAAACAP//AwANAA0AAAACAAAAAwANAA4AAAADAAAAAwALAA4AAAAEAP//AwAMAA0AAAAEAAAAAwAMAA4AAAAFAAAAAwANAA4AAAAGAP//AwALAA0AAAAGAAAAAwALAA4AAAAHAAAAAwAMAA4AAAAIAP//AwANAA0AAAAIAAAAAwANAA4AAAAJAP//AwALAA0AAAAJAAAAAwALAA4AAAAKAAAAAwAMAA4AAAALAP//AwANAA0AAAALAAAAAwANAA4AAAAMAP//AwALAA0AAAAMAAAAAwALAA4AAAANAP//AwAMAA0AAAANAAAAAwAMAA4AAAAOAP//AwANAA0AAAAOAAAAAwANAA4AAAAPAP//AwALAA0AAAAPAAAAAwALAA4AAAAQAP//AwAMAA0AAAAQAAAAAwAMAA4AAAA=")
 tile_set = SubResource("TileSet_cgu3i")
 
 [node name="objetos" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAABAP7/AgAAAEQAAAABAP//AgAAAEUAAAD7//7/AgAAAEQAAAD7////AgAAAEUAAAAFAP//AgAGAEoAAAAHAP//AgAGAEoAAAADAP7/AgAAAEQAAAADAP//AgAAAEUAAAD1//7/AgAAAEQAAAD1////AgAAAEUAAADy//7/AgANACgAAADy////AgANACkAAADz//7/AgAOACgAAADz////AgAOACkAAADv//7/AgANACgAAADv////AgANACkAAADw//7/AgAOACgAAADw////AgAOACkAAADs//7/AgANACgAAADs////AgANACkAAADt//7/AgAOACgAAADt////AgAOACkAAAD9////AgAOACQAAAD8////AgANACQAAAD6////AgAAACYAAAA=")
+tile_map_data = PackedByteArray("AAD7//7/AgAAAEQAAAD7////AgAAAEUAAAAFAP//AgAGAEoAAAAHAP//AgAGAEoAAAD1//7/AgAAAEQAAAD1////AgAAAEUAAADy//7/AgANACgAAADy////AgANACkAAADz//7/AgAOACgAAADz////AgAOACkAAADv//7/AgANACgAAADv////AgANACkAAADw//7/AgAOACgAAADw////AgAOACkAAADs//7/AgANACgAAADs////AgANACkAAADt//7/AgAOACgAAADt////AgAOACkAAAD9////AgAOACQAAAD8////AgANACQAAAD6////AgAAACYAAAA=")
 tile_set = SubResource("TileSet_cgu3i")
 
-[node name="mesas" parent="." instance=ExtResource("3_wblw8")]
-position = Vector2(20, -31)
-
 [node name="ground" type="StaticBody2D" parent="."]
+script = ExtResource("3_jt67j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
 shape = SubResource("WorldBoundaryShape2D_myhl4")
 
-[node name="sofas" parent="." instance=ExtResource("5_6oxdu")]
-position = Vector2(-32, -208)
-
 [node name="personaje" parent="." instance=ExtResource("5_kcwef")]
-position = Vector2(-154, -443)
+position = Vector2(0, -35)
 
 [node name="Camera2D" type="Camera2D" parent="personaje"]
 
@@ -1459,3 +1454,7 @@ offset_bottom = -195.0
 text = "RECORD: X"
 label_settings = SubResource("LabelSettings_o4u42")
 script = ExtResource("7_7pp7b")
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D" parent="." instance=ExtResource("6_l3pvg")]
+position = Vector2(-106, -67)

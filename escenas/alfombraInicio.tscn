@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbpu2sqbfak26"]
+
+[ext_resource type="Texture2D" uid="uid://llnlel4wbx3e" path="res://assets/Interiors_free/Interiors_free_16x16.png" id="1_cv5gi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w1hn"]
+size = Vector2(48, 28)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cv5gi")
+region_enabled = true
+region_rect = Rect2(48, 672, 48, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8w1hn")

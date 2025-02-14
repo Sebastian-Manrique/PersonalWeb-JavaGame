@@ -24,4 +24,4 @@ func _on_timer_timeout():
 
 
 func actualizar_label():
-	label.text = "Contador: " + str(contador) + "\nMetros: " + str(metros)
+	label.text = "Contador: " + str(contador) + "\n " + str(metros) + " m"

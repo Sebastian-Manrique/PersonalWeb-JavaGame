@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://5v2v47teeufb"]
 
-[ext_resource type="Texture2D" uid="uid://llnlel4wbx3e" path="res://assets/Interiors_free/Interiors_free_16x16.png" id="1_ev2t7"]
+[ext_resource type="Texture2D" uid="uid://llnlel4wbx3e" path="res://assets/Interiors_free/Interiors_free_16x16.png" id="1_e6yif"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_u3j88"]
 tile_data = PackedInt32Array(0, 196608, 55)
@@ -12,7 +12,7 @@ tile_data = PackedInt32Array(0, 0, 41)
 tile_data = PackedInt32Array(0, 327680, 55)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1iyd"]
-texture = ExtResource("1_ev2t7")
+texture = ExtResource("1_e6yif")
 1:0/0 = 0
 2:0/0 = 0
 4:0/0 = 0
@@ -1162,7 +1162,7 @@ position = Vector2(124, 9)
 
 [node name="Sprite2D" type="Sprite2D" parent="pizarra"]
 position = Vector2(-228.001, -197.496)
-texture = ExtResource("1_ev2t7")
+texture = ExtResource("1_e6yif")
 region_enabled = true
 region_rect = Rect2(3, 656, 26, 13)
 
