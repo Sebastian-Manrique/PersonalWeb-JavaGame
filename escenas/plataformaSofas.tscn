@@ -1126,7 +1126,7 @@ size = Vector2(46, 25)
 
 [node name="objetosAEscalar" type="TileMapLayer" parent="."]
 position = Vector2(0, 11)
-tile_map_data = PackedByteArray(0, 0, 248, 255, 243, 255, 0, 0, 1, 0, 72, 0, 0, 0, 2, 0, 255, 255, 0, 0, 1, 0, 72, 0, 0, 0, 4, 0, 251, 255, 0, 0, 1, 0, 72, 0, 0, 0, 7, 0, 247, 255, 0, 0, 1, 0, 72, 0, 0, 0, 0, 0, 245, 255, 0, 0, 1, 0, 72, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 248, 255, 243, 255, 0, 0, 1, 0, 72, 0, 0, 0, 2, 0, 255, 255, 0, 0, 1, 0, 72, 0, 0, 0, 7, 0, 247, 255, 0, 0, 1, 0, 72, 0, 0, 0, 4, 0, 251, 255, 0, 0, 4, 0, 72, 0, 0, 0, 0, 0, 245, 255, 0, 0, 4, 0, 72, 0, 0, 0)
 tile_set = SubResource("TileSet_cwyvm")
 
 [node name="sofa" type="StaticBody2D" parent="."]
