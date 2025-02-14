@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8j4kko2mmpn5"]
+
+[ext_resource type="Texture2D" uid="uid://6738ge0mas8p" path="res://assets/Characters_free/Adam_idle_16x16.png" id="1_sfxhs"]
+[ext_resource type="Script" path="res://scripts/jugador.gd" id="1_uydjs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knmey"]
+atlas = ExtResource("1_sfxhs")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_743xh"]
+atlas = ExtResource("1_sfxhs")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vssyg"]
+atlas = ExtResource("1_sfxhs")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j430"]
+atlas = ExtResource("1_sfxhs")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yu43f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knmey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_743xh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vssyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j430")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5u8x4"]
+radius = 6.0
+height = 23.0
+
+[node name="personaje" type="CharacterBody2D"]
+script = ExtResource("1_uydjs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yu43f")
+autoplay = "default"
+frame_progress = 0.526519
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("CapsuleShape2D_5u8x4")
