@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://d1xmlq8objg13"]
+[gd_scene load_steps=13 format=4 uid="uid://oqq2bjvamgwe"]
 
 [ext_resource type="Texture2D" uid="uid://llnlel4wbx3e" path="res://assets/Interiors_free/Interiors_free_16x16.png" id="1_u6dtq"]
-[ext_resource type="PackedScene" uid="uid://cmpg3dsykj7qb" path="res://escenas/mesaMovible.tscn" id="3_uok4m"]
+[ext_resource type="PackedScene" uid="uid://bjg4jre8xu060" path="res://escenas/mesaMovible.tscn" id="3_uok4m"]
 [ext_resource type="PackedScene" uid="uid://c8j4kko2mmpn5" path="res://escenas/jugador.tscn" id="3_uux4c"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_u3j88"]
@@ -1224,8 +1224,9 @@ _data = {
 "mover": SubResource("Animation_pp72j")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hirf6"]
-size = Vector2(33, 31.311)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_commr"]
+radius = 2.0
+height = 35.0
 
 [node name="PlataformasMoviles" type="Node2D"]
 
@@ -1257,5 +1258,6 @@ region_enabled = true
 region_rect = Rect2(8, 160, 48, 40)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="mesa_no_movible"]
-position = Vector2(193.898, -100.723)
-shape = SubResource("RectangleShape2D_hirf6")
+position = Vector2(193.398, -115.378)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_commr")

@@ -1119,10 +1119,12 @@ texture = ExtResource("1_ycbt1")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_h7hky")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnsb3"]
-size = Vector2(46, 25)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jcmqd"]
+radius = 2.0
+height = 45.998
 
 [node name="plataforma" type="Node2D"]
+position = Vector2(0, 12)
 
 [node name="objetosAEscalar" type="TileMapLayer" parent="."]
 position = Vector2(0, 11)
@@ -1138,5 +1140,6 @@ region_enabled = true
 region_rect = Rect2(64, 1157, 48, 27)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sofa"]
-position = Vector2(-228.001, -196.996)
-shape = SubResource("RectangleShape2D_rnsb3")
+position = Vector2(-228.001, -208)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_jcmqd")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://5v2v47teeufb"]
+[gd_scene load_steps=8 format=4 uid="uid://lyigj81e7c10"]
 
 [ext_resource type="Texture2D" uid="uid://llnlel4wbx3e" path="res://assets/Interiors_free/Interiors_free_16x16.png" id="1_e6yif"]
 
@@ -1148,24 +1148,27 @@ pattern_0 = SubResource("TileMapPattern_u3j88")
 pattern_1 = SubResource("TileMapPattern_q33k1")
 pattern_2 = SubResource("TileMapPattern_8b6a1")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdl6b"]
-size = Vector2(26, 13)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60n6j"]
+radius = 0.5
+height = 24.0
 
 [node name="mesas" type="Node2D"]
+position = Vector2(0, 23)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD8//v/AAAAACkAAAD1//f/AAAAACkAAAD1//v/AAAFADcAAAD4//r/AAAAACkAAAD4//3/AAAAACkAAAD7//f/AAAAACkAAAD8//7/AAADADcAAAABAP//AAAFADcAAAA=")
+tile_map_data = PackedByteArray("AAABAAAAAAAFADcAAAD8/wAAAAADADcAAAD6//3/AAAFADcAAAADAP3/AAAAACkAAAD///v/AAAAACkAAAD8//j/AAAAACkAAAACAPj/AAAAACkAAAA=")
 tile_set = SubResource("TileSet_teu4q")
 
 [node name="pizarra" type="StaticBody2D" parent="."]
 position = Vector2(124, 9)
 
 [node name="Sprite2D" type="Sprite2D" parent="pizarra"]
-position = Vector2(-228.001, -197.496)
+position = Vector2(-135, -171.5)
 texture = ExtResource("1_e6yif")
 region_enabled = true
 region_rect = Rect2(3, 656, 26, 13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pizarra"]
-position = Vector2(-228, -197.5)
-shape = SubResource("RectangleShape2D_mdl6b")
+position = Vector2(-134.999, -177.004)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_60n6j")

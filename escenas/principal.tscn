@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/ground.gd" id="3_jt67j"]
 [ext_resource type="PackedScene" uid="uid://c8j4kko2mmpn5" path="res://escenas/jugador.tscn" id="5_kcwef"]
 [ext_resource type="FontFile" uid="uid://blsuygiouek2e" path="res://assets/pixelFont.ttf" id="6_gywvm"]
-[ext_resource type="PackedScene" uid="uid://bbpu2sqbfak26" path="res://escenas/alfombraInicio.tscn" id="6_l3pvg"]
+[ext_resource type="PackedScene" uid="uid://xnfbyvnlaarb" path="res://escenas/alfombraInicio.tscn" id="6_l3pvg"]
 [ext_resource type="Script" path="res://scripts/marcador.gd" id="7_7pp7b"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_gym1b"]
@@ -1445,6 +1445,7 @@ shape = SubResource("WorldBoundaryShape2D_myhl4")
 position = Vector2(0, -35)
 
 [node name="Camera2D" type="Camera2D" parent="personaje"]
+zoom = Vector2(1.5, 1.5)
 
 [node name="marcador" type="Label" parent="personaje"]
 offset_left = -576.0
@@ -1457,4 +1458,4 @@ script = ExtResource("7_7pp7b")
 metadata/_edit_use_anchors_ = true
 
 [node name="StaticBody2D" parent="." instance=ExtResource("6_l3pvg")]
-position = Vector2(-106, -67)
+position = Vector2(64, -49)
