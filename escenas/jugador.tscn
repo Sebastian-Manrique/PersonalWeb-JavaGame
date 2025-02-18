@@ -43,7 +43,7 @@ animations = [{
 radius = 6.0
 height = 23.0
 
-[node name="personaje" type="CharacterBody2D"]
+[node name="personaje" type="CharacterBody2D" groups=["jugador"]]
 z_index = 1
 script = ExtResource("1_uydjs")
 

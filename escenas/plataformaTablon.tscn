@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://lyigj81e7c10"]
+[gd_scene load_steps=10 format=4 uid="uid://lyigj81e7c10"]
 
 [ext_resource type="Texture2D" uid="uid://llnlel4wbx3e" path="res://assets/Interiors_free/Interiors_free_16x16.png" id="1_e6yif"]
+[ext_resource type="Script" path="res://scripts/generadorDePlataformas.gd" id="2_kf4pt"]
+[ext_resource type="PackedScene" uid="uid://c8j4kko2mmpn5" path="res://escenas/jugador.tscn" id="3_y6jjh"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_u3j88"]
 tile_data = PackedInt32Array(0, 196608, 55)
@@ -657,10 +659,6 @@ texture = ExtResource("1_e6yif")
 14:50/0 = 0
 0:51/0 = 0
 1:51/0 = 0
-2:51/0 = 0
-3:51/0 = 0
-4:51/0 = 0
-5:51/0 = 0
 6:51/0 = 0
 7:51/0 = 0
 8:51/0 = 0
@@ -673,10 +671,6 @@ texture = ExtResource("1_e6yif")
 15:51/0 = 0
 0:52/0 = 0
 1:52/0 = 0
-2:52/0 = 0
-3:52/0 = 0
-4:52/0 = 0
-5:52/0 = 0
 6:52/0 = 0
 7:52/0 = 0
 8:52/0 = 0
@@ -689,8 +683,6 @@ texture = ExtResource("1_e6yif")
 15:52/0 = 0
 0:53/0 = 0
 1:53/0 = 0
-2:53/0 = 0
-3:53/0 = 0
 4:53/0 = 0
 5:53/0 = 0
 7:53/0 = 0
@@ -1140,6 +1132,14 @@ texture = ExtResource("1_e6yif")
 5:55/size_in_atlas = Vector2i(2, 2)
 5:55/0 = 0
 5:55/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14.9045, -10.01, 15.015, -10.0542, 14.9708, 8.02124, -15.0371, 7.97705)
+2:53/0 = 0
+3:53/0 = 0
+2:51/size_in_atlas = Vector2i(2, 2)
+2:51/0 = 0
+2:51/0/physics_layer_0/polygon_0/points = PackedVector2Array(-15, -5, 15, -5, 15, 8, 14, 8, 14, 13, 10, 13, 10, 10, -10, 10, -10, 13, -14, 13, -14, 8, -15, 8)
+4:51/size_in_atlas = Vector2i(2, 2)
+4:51/0 = 0
+4:51/0/physics_layer_0/polygon_0/points = PackedVector2Array(-15, -5, 15, -5, 15, 8, 14, 8, 14, 13, 10, 13, 10, 10, -10, 10, -10, 13, -14, 13, -14, 8, -15, 8)
 
 [sub_resource type="TileSet" id="TileSet_teu4q"]
 physics_layer_0/collision_layer = 1
@@ -1153,22 +1153,29 @@ radius = 0.5
 height = 24.0
 
 [node name="mesas" type="Node2D"]
-position = Vector2(0, 23)
+position = Vector2(0, 25)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAABAAAAAAAFADcAAAD8/wAAAAADADcAAAD6//3/AAAFADcAAAADAP3/AAAAACkAAAD///v/AAAAACkAAAD8//j/AAAAACkAAAACAPj/AAAAACkAAAA=")
+position = Vector2(0, 23)
+tile_map_data = PackedByteArray("AAD9//3/AAADADcAAAACAAAAAAAFADcAAAAHAP3/AAADADcAAAACAPr/AAAAACkAAAD///f/AAAAACkAAAAHAPf/AAAAACkAAAALAPr/AAAAACkAAAD5//r/AAAFADcAAAD7//T/AAAEADMAAAADAPT/AAAEADMAAAA=")
 tile_set = SubResource("TileSet_teu4q")
 
 [node name="pizarra" type="StaticBody2D" parent="."]
-position = Vector2(124, 9)
+position = Vector2(191, 20)
+script = ExtResource("2_kf4pt")
 
 [node name="Sprite2D" type="Sprite2D" parent="pizarra"]
-position = Vector2(-135, -171.5)
+position = Vector2(-191, -216.5)
 texture = ExtResource("1_e6yif")
 region_enabled = true
 region_rect = Rect2(3, 656, 26, 13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pizarra"]
-position = Vector2(-134.999, -177.004)
+position = Vector2(-190.999, -222.004)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_60n6j")
+
+[node name="personaje" parent="." instance=ExtResource("3_y6jjh")]
+position = Vector2(57, -186)
+
+[node name="Camera2D" type="Camera2D" parent="personaje"]

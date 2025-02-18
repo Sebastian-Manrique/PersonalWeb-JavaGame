@@ -1,6 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://iu47tu17ta8a"]
+[gd_scene load_steps=6 format=3 uid="uid://iu47tu17ta8a"]
 
 [ext_resource type="Texture2D" uid="uid://llnlel4wbx3e" path="res://assets/Interiors_free/Interiors_free_16x16.png" id="1_ycbt1"]
+[ext_resource type="PackedScene" uid="uid://c8j4kko2mmpn5" path="res://escenas/jugador.tscn" id="2_1lmoy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jcmqd"]
+radius = 2.0
+height = 45.998
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7hky"]
 texture = ExtResource("1_ycbt1")
@@ -1119,27 +1124,36 @@ texture = ExtResource("1_ycbt1")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_h7hky")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jcmqd"]
-radius = 2.0
-height = 45.998
-
 [node name="plataforma" type="Node2D"]
-position = Vector2(0, 12)
+position = Vector2(0, 60)
 
-[node name="objetosAEscalar" type="TileMapLayer" parent="."]
-position = Vector2(0, 11)
-tile_map_data = PackedByteArray(0, 0, 248, 255, 243, 255, 0, 0, 1, 0, 72, 0, 0, 0, 2, 0, 255, 255, 0, 0, 1, 0, 72, 0, 0, 0, 7, 0, 247, 255, 0, 0, 1, 0, 72, 0, 0, 0, 4, 0, 251, 255, 0, 0, 4, 0, 72, 0, 0, 0, 0, 0, 245, 255, 0, 0, 4, 0, 72, 0, 0, 0)
-tile_set = SubResource("TileSet_cwyvm")
-
-[node name="sofa" type="StaticBody2D" parent="."]
+[node name="sofa" type="StaticBody2D" parent="." groups=["jugador"]]
+position = Vector2(140, 72)
 
 [node name="Sprite2D" type="Sprite2D" parent="sofa"]
-position = Vector2(-228.001, -197.496)
+position = Vector2(-324, -213.5)
 texture = ExtResource("1_ycbt1")
 region_enabled = true
 region_rect = Rect2(64, 1157, 48, 27)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sofa"]
-position = Vector2(-228.001, -208)
+position = Vector2(-324, -224.004)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_jcmqd")
+
+[node name="Area2D" type="Area2D" parent="sofa"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sofa/Area2D"]
+position = Vector2(-324, -224.004)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_jcmqd")
+
+[node name="objetosAEscalar" type="TileMapLayer" parent="."]
+position = Vector2(0, 40)
+tile_map_data = PackedByteArray(0, 0, 7, 0, 249, 255, 0, 0, 1, 0, 72, 0, 0, 0, 0, 0, 247, 255, 0, 0, 4, 0, 72, 0, 0, 0, 4, 0, 253, 255, 0, 0, 4, 0, 72, 0, 0, 0, 253, 255, 255, 255, 0, 0, 1, 0, 72, 0, 0, 0, 250, 255, 246, 255, 0, 0, 1, 0, 72, 0, 0, 0)
+tile_set = SubResource("TileSet_cwyvm")
+
+[node name="personaje" parent="." instance=ExtResource("2_1lmoy")]
+position = Vector2(-103, -144)
+
+[node name="Camera2D" type="Camera2D" parent="personaje"]

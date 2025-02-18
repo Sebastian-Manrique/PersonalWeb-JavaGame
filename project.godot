@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 enabled=PackedStringArray("res://addons/gdscript_formatter/plugin.cfg")
 
+[global_group]
+
+jugador=""
+
 [input]
 
 ui_left={

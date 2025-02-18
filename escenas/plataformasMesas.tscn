@@ -1229,13 +1229,15 @@ radius = 2.0
 height = 35.0
 
 [node name="PlataformasMoviles" type="Node2D"]
+position = Vector2(17, 60)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAOAPr/AAAFAAoAAAAOAPv/AAAFAAsAAAAOAPz/AAAFAAwAAAAPAPr/AAAGAAoAAAAPAPv/AAAGAAsAAAAPAPz/AAAGAAwAAAAQAPr/AAAHAAoAAAAQAPv/AAAHAAsAAAAQAPz/AAAHAAwAAAARAPr/AAAIAAoAAAARAPv/AAAIAAsAAAARAPz/AAAIAAwAAAABAAAAAAAHAA0AAAABAAEAAAAHAA4AAAACAAAAAAAIAA0AAAACAAEAAAAIAA4AAAADAAAAAAAIAA0AAAADAAEAAAAIAA4AAAAEAAAAAAAIAA0AAAAEAAEAAAAIAA4AAAAFAAAAAAAJAA0AAAAFAAEAAAAJAA4AAAA=")
+position = Vector2(0, -23)
+tile_map_data = PackedByteArray("AAABAAAAAAAHAA0AAAABAAEAAAAHAA4AAAACAAAAAAAIAA0AAAACAAEAAAAIAA4AAAADAAAAAAAIAA0AAAADAAEAAAAIAA4AAAAEAAAAAAAIAA0AAAAEAAEAAAAIAA4AAAAFAAAAAAAJAA0AAAAFAAEAAAAJAA4AAAAOAPr/AAAFAAoAAAAOAPv/AAAFAAsAAAAOAPz/AAAFAAwAAAAPAPr/AAAGAAoAAAAPAPv/AAAGAAsAAAAPAPz/AAAGAAwAAAAQAPr/AAAHAAoAAAAQAPv/AAAHAAsAAAAQAPz/AAAHAAwAAAARAPr/AAAIAAoAAAARAPv/AAAIAAsAAAARAPz/AAAIAAwAAAA=")
 tile_set = SubResource("TileSet_qqjqm")
 
 [node name="personaje" parent="." instance=ExtResource("3_uux4c")]
-position = Vector2(48, -45)
+position = Vector2(48, -68)
 
 [node name="Camera2D" type="Camera2D" parent="personaje"]
 
@@ -1249,15 +1251,15 @@ libraries = {
 autoplay = "RESET"
 
 [node name="mesa_no_movible" type="StaticBody2D" parent="."]
-position = Vector2(151.602, -42.622)
+position = Vector2(63, -1)
 
 [node name="Sprite2D" type="Sprite2D" parent="mesa_no_movible"]
-position = Vector2(193.398, -98.378)
+position = Vector2(289, -162)
 texture = ExtResource("1_u6dtq")
 region_enabled = true
 region_rect = Rect2(8, 160, 48, 40)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="mesa_no_movible"]
-position = Vector2(193.398, -115.378)
+position = Vector2(289, -179)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_commr")
