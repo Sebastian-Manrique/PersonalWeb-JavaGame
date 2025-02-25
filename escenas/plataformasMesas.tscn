@@ -2,7 +2,50 @@
 
 [ext_resource type="Texture2D" uid="uid://llnlel4wbx3e" path="res://assets/Interiors_free/Interiors_free_16x16.png" id="1_u6dtq"]
 [ext_resource type="PackedScene" uid="uid://bjg4jre8xu060" path="res://escenas/mesaMovible.tscn" id="3_uok4m"]
-[ext_resource type="PackedScene" uid="uid://c8j4kko2mmpn5" path="res://escenas/jugador.tscn" id="3_uux4c"]
+
+[sub_resource type="Animation" id="Animation_64sb2"]
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(131, -36), Vector2(215, -63)]
+}
+
+[sub_resource type="Animation" id="Animation_pp72j"]
+resource_name = "mover"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(71, -30), Vector2(148, -30)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7x64"]
+_data = {
+"RESET": SubResource("Animation_64sb2"),
+"mover": SubResource("Animation_pp72j")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sj3y"]
+size = Vector2(33.9999, 36.0001)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7uqo"]
+size = Vector2(3.00004, 32.25)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_u3j88"]
 tile_data = PackedInt32Array(0, 196608, 55)
@@ -1186,60 +1229,8 @@ pattern_0 = SubResource("TileMapPattern_u3j88")
 pattern_1 = SubResource("TileMapPattern_q33k1")
 pattern_2 = SubResource("TileMapPattern_8b6a1")
 
-[sub_resource type="Animation" id="Animation_64sb2"]
-length = 2.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(131, -36), Vector2(215, -63)]
-}
-
-[sub_resource type="Animation" id="Animation_pp72j"]
-resource_name = "mover"
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(71, -30), Vector2(148, -30)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7x64"]
-_data = {
-"RESET": SubResource("Animation_64sb2"),
-"mover": SubResource("Animation_pp72j")
-}
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_commr"]
-radius = 2.0
-height = 35.0
-
 [node name="PlataformasMoviles" type="Node2D"]
 position = Vector2(17, 60)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(0, -23)
-tile_map_data = PackedByteArray("AAABAAAAAAAHAA0AAAABAAEAAAAHAA4AAAACAAAAAAAIAA0AAAACAAEAAAAIAA4AAAADAAAAAAAIAA0AAAADAAEAAAAIAA4AAAAEAAAAAAAIAA0AAAAEAAEAAAAIAA4AAAAFAAAAAAAJAA0AAAAFAAEAAAAJAA4AAAAOAPr/AAAFAAoAAAAOAPv/AAAFAAsAAAAOAPz/AAAFAAwAAAAPAPr/AAAGAAoAAAAPAPv/AAAGAAsAAAAPAPz/AAAGAAwAAAAQAPr/AAAHAAoAAAAQAPv/AAAHAAsAAAAQAPz/AAAHAAwAAAARAPr/AAAIAAoAAAARAPv/AAAIAAsAAAARAPz/AAAIAAwAAAA=")
-tile_set = SubResource("TileSet_qqjqm")
-
-[node name="personaje" parent="." instance=ExtResource("3_uux4c")]
-position = Vector2(48, -68)
-
-[node name="Camera2D" type="Camera2D" parent="personaje"]
 
 [node name="movible_mesa" parent="." instance=ExtResource("3_uok4m")]
 position = Vector2(131, -36)
@@ -1260,6 +1251,18 @@ region_enabled = true
 region_rect = Rect2(8, 160, 48, 40)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="mesa_no_movible"]
-position = Vector2(289, -179)
+position = Vector2(289, -163)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_commr")
+shape = SubResource("RectangleShape2D_4sj3y")
+
+[node name="Area2D" type="Area2D" parent="mesa_no_movible"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mesa_no_movible/Area2D"]
+position = Vector2(289, -183)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_i7uqo")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, -23)
+tile_map_data = PackedByteArray("AAABAAAAAAAHAA0AAAABAAEAAAAHAA4AAAACAAAAAAAIAA0AAAACAAEAAAAIAA4AAAADAAAAAAAIAA0AAAADAAEAAAAIAA4AAAAEAAAAAAAIAA0AAAAEAAEAAAAIAA4AAAAFAAAAAAAJAA0AAAAFAAEAAAAJAA4AAAAOAPr/AAAFAAoAAAAOAPv/AAAFAAsAAAAOAPz/AAAFAAwAAAAPAPr/AAAGAAoAAAAPAPv/AAAGAAsAAAAPAPz/AAAGAAwAAAAQAPr/AAAHAAoAAAAQAPv/AAAHAAsAAAAQAPz/AAAHAAwAAAARAPr/AAAIAAoAAAARAPv/AAAIAAsAAAARAPz/AAAIAAwAAAA=")
+tile_set = SubResource("TileSet_qqjqm")

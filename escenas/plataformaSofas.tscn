@@ -1,11 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://iu47tu17ta8a"]
 
 [ext_resource type="Texture2D" uid="uid://llnlel4wbx3e" path="res://assets/Interiors_free/Interiors_free_16x16.png" id="1_ycbt1"]
-[ext_resource type="PackedScene" uid="uid://c8j4kko2mmpn5" path="res://escenas/jugador.tscn" id="2_1lmoy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jcmqd"]
-radius = 2.0
+radius = 14.0
 height = 45.998
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_acs5i"]
+size = Vector2(3.00004, 39)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7hky"]
 texture = ExtResource("1_ycbt1")
@@ -1128,32 +1130,27 @@ sources/0 = SubResource("TileSetAtlasSource_h7hky")
 position = Vector2(0, 60)
 
 [node name="sofa" type="StaticBody2D" parent="." groups=["jugador"]]
-position = Vector2(140, 72)
+position = Vector2(-200, -156)
 
 [node name="Sprite2D" type="Sprite2D" parent="sofa"]
-position = Vector2(-324, -213.5)
+position = Vector2(0, 6.5)
 texture = ExtResource("1_ycbt1")
 region_enabled = true
 region_rect = Rect2(64, 1157, 48, 27)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sofa"]
-position = Vector2(-324, -224.004)
+position = Vector2(0, 6)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_jcmqd")
 
 [node name="Area2D" type="Area2D" parent="sofa"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sofa/Area2D"]
-position = Vector2(-324, -224.004)
+position = Vector2(0, -9)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_jcmqd")
+shape = SubResource("RectangleShape2D_acs5i")
 
 [node name="objetosAEscalar" type="TileMapLayer" parent="."]
 position = Vector2(0, 40)
 tile_map_data = PackedByteArray(0, 0, 7, 0, 249, 255, 0, 0, 1, 0, 72, 0, 0, 0, 0, 0, 247, 255, 0, 0, 4, 0, 72, 0, 0, 0, 4, 0, 253, 255, 0, 0, 4, 0, 72, 0, 0, 0, 253, 255, 255, 255, 0, 0, 1, 0, 72, 0, 0, 0, 250, 255, 246, 255, 0, 0, 1, 0, 72, 0, 0, 0)
 tile_set = SubResource("TileSet_cwyvm")
-
-[node name="personaje" parent="." instance=ExtResource("2_1lmoy")]
-position = Vector2(-103, -144)
-
-[node name="Camera2D" type="Camera2D" parent="personaje"]

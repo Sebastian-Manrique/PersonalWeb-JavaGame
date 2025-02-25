@@ -27,6 +27,9 @@ func _on_body_entered(body):
 		generar_plataforma()
 		tocado = true
 
+	elif tocado:
+		print("Este ya fue tocado")
+
 
 func generar_plataforma() -> void:
 	var distancia = global_position.distance_to(ultima_posicion_generada)
@@ -44,12 +47,17 @@ func generar_plataforma() -> void:
 
 	if mapa == 1:
 		nueva_plataforma = tilemap_sofas.instantiate()
+		print("Generando sofas")
+
 	elif mapa == 2:
 		nueva_plataforma = tilemap_mesas.instantiate()
+		print("Generando mesas")
 	elif mapa == 3:
 		nueva_plataforma = tilemap_jodo.instantiate()
+		print("Generando jodo")
 	elif mapa == 4:
 		nueva_plataforma = tilemap_mesasMovibles.instantiate()
+		print("Generando mesas movibles")
 
 	nueva_plataforma.position = nueva_posicion_redondeada
 	get_parent().add_child(nueva_plataforma)

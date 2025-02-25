@@ -1,8 +1,14 @@
-[gd_scene load_steps=10 format=4 uid="uid://lyigj81e7c10"]
+[gd_scene load_steps=9 format=4 uid="uid://lyigj81e7c10"]
 
 [ext_resource type="Texture2D" uid="uid://llnlel4wbx3e" path="res://assets/Interiors_free/Interiors_free_16x16.png" id="1_e6yif"]
-[ext_resource type="Script" path="res://scripts/generadorDePlataformas.gd" id="2_kf4pt"]
-[ext_resource type="PackedScene" uid="uid://c8j4kko2mmpn5" path="res://escenas/jugador.tscn" id="3_y6jjh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60n6j"]
+radius = 6.0
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ampk7"]
+radius = 1.0
+height = 20.0
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_u3j88"]
 tile_data = PackedInt32Array(0, 196608, 55)
@@ -1148,21 +1154,11 @@ pattern_0 = SubResource("TileMapPattern_u3j88")
 pattern_1 = SubResource("TileMapPattern_q33k1")
 pattern_2 = SubResource("TileMapPattern_8b6a1")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60n6j"]
-radius = 0.5
-height = 24.0
-
 [node name="mesas" type="Node2D"]
 position = Vector2(0, 25)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(0, 23)
-tile_map_data = PackedByteArray("AAD9//3/AAADADcAAAACAAAAAAAFADcAAAAHAP3/AAADADcAAAACAPr/AAAAACkAAAD///f/AAAAACkAAAAHAPf/AAAAACkAAAALAPr/AAAAACkAAAD5//r/AAAFADcAAAD7//T/AAAEADMAAAADAPT/AAAEADMAAAA=")
-tile_set = SubResource("TileSet_teu4q")
-
 [node name="pizarra" type="StaticBody2D" parent="."]
 position = Vector2(191, 20)
-script = ExtResource("2_kf4pt")
 
 [node name="Sprite2D" type="Sprite2D" parent="pizarra"]
 position = Vector2(-191, -216.5)
@@ -1171,11 +1167,18 @@ region_enabled = true
 region_rect = Rect2(3, 656, 26, 13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pizarra"]
-position = Vector2(-190.999, -222.004)
+position = Vector2(-191, -216)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_60n6j")
 
-[node name="personaje" parent="." instance=ExtResource("3_y6jjh")]
-position = Vector2(57, -186)
+[node name="Area2D" type="Area2D" parent="pizarra"]
 
-[node name="Camera2D" type="Camera2D" parent="personaje"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pizarra/Area2D"]
+position = Vector2(-191, -224)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ampk7")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, 23)
+tile_map_data = PackedByteArray("AAD9//3/AAADADcAAAACAAAAAAAFADcAAAAHAP3/AAADADcAAAACAPr/AAAAACkAAAAHAPf/AAAAACkAAAALAPr/AAAAACkAAAD5//r/AAAFADcAAAADAPT/AAAEADMAAAD7//X/AAAEADMAAAA=")
+tile_set = SubResource("TileSet_teu4q")
