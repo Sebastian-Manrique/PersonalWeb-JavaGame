@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="proyectoParaPMDM"
-run/main_scene="res://escenas/principal.tscn"
+run/main_scene="res://escenas/menuPrincipal.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+AudioPlayer="*res://escenas/audioPlayer.tscn"
 
 [editor_plugins]
 

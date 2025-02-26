@@ -1,57 +1,104 @@
 [gd_scene load_steps=9 format=3 uid="uid://c8j4kko2mmpn5"]
 
-[ext_resource type="Texture2D" uid="uid://6738ge0mas8p" path="res://assets/Characters_free/Adam_idle_16x16.png" id="1_sfxhs"]
 [ext_resource type="Script" path="res://scripts/jugador.gd" id="1_uydjs"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_knmey"]
-atlas = ExtResource("1_sfxhs")
-region = Rect2(48, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_743xh"]
-atlas = ExtResource("1_sfxhs")
-region = Rect2(32, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vssyg"]
-atlas = ExtResource("1_sfxhs")
-region = Rect2(16, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2j430"]
-atlas = ExtResource("1_sfxhs")
-region = Rect2(0, 0, 16, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_yu43f"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_knmey")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_743xh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vssyg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2j430")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://d0th3s8vd26f5" path="res://assets/Characters_free/Adam_run_16x16.png" id="2_idk8d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5u8x4"]
 radius = 6.0
 height = 23.0
 
+[sub_resource type="Animation" id="Animation_tgaym"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [48]
+}
+
+[sub_resource type="Animation" id="Animation_rtvyi"]
+resource_name = "move_left"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [17, 12, 13, 14, 15, 16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_v8q4n"]
+resource_name = "move_left"
+length = 0.18
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_r832e"]
+resource_name = "idle"
+length = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [23]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ygrgp"]
+_data = {
+"RESET": SubResource("Animation_tgaym"),
+"idle": SubResource("Animation_r832e"),
+"move_left": SubResource("Animation_rtvyi"),
+"move_right": SubResource("Animation_v8q4n")
+}
+
 [node name="personaje" type="CharacterBody2D" groups=["jugador"]]
 z_index = 1
 script = ExtResource("1_uydjs")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_yu43f")
-autoplay = "default"
-frame_progress = 0.526519
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-16, -32)
+texture = ExtResource("2_idk8d")
+offset = Vector2(16, 16)
+hframes = 24
+frame = 23
+region_rect = Rect2(48, 8, 16, 24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4.5)
+visible = false
+position = Vector2(0, -11)
 shape = SubResource("CapsuleShape2D_5u8x4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ygrgp")
+}
+speed_scale = 0.17
